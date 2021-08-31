@@ -2,7 +2,7 @@ require 'date'
 
 class Bank
 
-  TODAY = Date.today.strftime("%d/%m/%Y")
+  TODAY = Date.today.strftime('%d/%m/%Y')
 
   attr_reader :balance, :interactions
 
@@ -37,6 +37,7 @@ class Bank
       csv_line = interaction_data.join(',')
       file.puts(csv_line)
     end
+    puts "Your statement has been saved to '#{filename}'."
     file.close
   end
 

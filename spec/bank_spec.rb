@@ -1,6 +1,7 @@
 require 'bank'
 
 describe Bank do
+
   describe '#initialize' do
     it 'starts with a balance of 0' do
       expect(subject.balance).to eq 0
@@ -52,6 +53,10 @@ describe Bank do
       expect(File.read('filename')).to include '0'
       expect(File.read('filename')).to include Bank::TODAY
     end
+    it 'outputs that the file has been saved' do
+      subject.deposit(10)
+      expect { subject.save_statement('filename') }.to output("Your statement has been saved to 'filename'.\n").to_stdout
+    end
   end
-
+  
 end
