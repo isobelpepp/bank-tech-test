@@ -17,8 +17,8 @@ class Statement
   end
 
   def print
-    puts "date:     | credit:  | debit:   | balance  |\n"
-    @transactions.each { |h| puts "#{h[:date]}" "|#{h[:credit].to_s.ljust(10)}" "|#{h[:debit].to_s.ljust(10)}" "|#{h[:balance].to_s.ljust(10)}" "|" }
+    puts "date:     | credit:  | debit:   | balance: |"
+    @transactions.reverse_each { |h| puts "#{h[:date]}" "|#{h[:credit].to_s.ljust(10)}" "|#{h[:debit].to_s.ljust(10)}" "|#{h[:balance].to_s.ljust(10)}" "|" }
   end
 
   def save(filename)
