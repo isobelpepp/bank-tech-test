@@ -42,6 +42,8 @@ class Bank
   end
 
   def load_statement(filename)
+    raise 'That file does not exist' unless File.exist?(filename)
+
     file = File.open(filename, 'r')
     file.readlines.each do |line|
       date, credit, debit, balance = line.chomp.split(',')

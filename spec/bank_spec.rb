@@ -65,6 +65,9 @@ describe Bank do
       expect(subject.interactions).to eq([{ date: Bank::TODAY, credit: 10, debit: 0, balance: 10 }])
       expect(subject.balance).to eq 10
     end
+    it 'raises an error if the file does not exist' do
+      expect { subject.load_statement('non_existent') }.to raise_error 'That file does not exist'
+    end
   end
 
 end
