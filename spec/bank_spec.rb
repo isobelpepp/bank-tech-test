@@ -44,4 +44,14 @@ describe Bank do
     end
   end
 
+  describe '#save_statement' do
+    it "should create 'filename' and put 'text' in it" do
+      subject.deposit(10)
+      subject.save_statement('filename')
+      expect(File.read('filename')).to include '10'
+      expect(File.read('filename')).to include '0'
+      expect(File.read('filename')).to include Bank::TODAY
+    end
+  end
+
 end
