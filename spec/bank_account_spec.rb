@@ -26,6 +26,9 @@ describe BankAccount do
     it 'raises error if you do not put in integer or float' do
       expect { bank_account.withdraw(:something) }.to raise_error 'Invalid input!'
     end
+    it 'raises error if you put in a negative number' do
+      expect { bank_account.withdraw(-10) }.to raise_error 'Invalid input!'
+    end
   end
 
   describe '#withdraw' do

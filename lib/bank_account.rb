@@ -13,13 +13,13 @@ class BankAccount
   end
 
   def deposit(amount)
-    raise 'Invalid input!' unless valid_input(amount)
+    raise 'Invalid input!' if invalid_input(amount)
     @balance += amount
     @statement.credit_transaction(amount, @balance)
   end
 
   def withdraw(amount)
-    raise 'Invalid input!' unless valid_input(amount)
+    raise 'Invalid input!' if invalid_input(amount)
     raise 'Insufficient funds!' if insufficient_funds(amount)
 
     @balance -= amount
@@ -45,7 +45,7 @@ class BankAccount
     (@balance - amount).negative?
   end
 
-  def valid_input(input)
-    input.is_a?(Integer) || input.is_a?(Float)
+  def invalid_input(input)
+    !(input.is_a?(Integer) || input.is_a?(Float)) || input.negative?
   end
 end
