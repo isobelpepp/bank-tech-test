@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
+# rubocop:disable Metrics/BlockLength
+
 require 'statement'
 
 describe Statement do
-  
   describe '#initialize' do
     it 'starts with no transactions' do
       expect(subject.transactions).to be_empty
@@ -31,7 +34,8 @@ describe Statement do
   describe '#print_statement' do
     it 'returns formatted version of interaction' do
       subject.credit_transaction(50, 100)
-      expect { subject.print }.to output("date:     | credit:  | debit:   | balance: |\n#{Statement::TODAY}|50        |0         |100       |\n").to_stdout
+      expect { subject.print }.to output("date:     | credit:  | debit:   | balance: |
+#{Statement::TODAY}|50        |0         |100       |\n").to_stdout
     end
   end
 
@@ -48,7 +52,6 @@ describe Statement do
       expect { subject.save('filename') }.to output("Your statement has been saved to 'filename'.\n").to_stdout
     end
   end
-
 
   describe '#load' do
     it 'loads the statement into the bank object' do
@@ -67,3 +70,5 @@ describe Statement do
     end
   end
 end
+
+# rubocop:enable Metrics/BlockLength

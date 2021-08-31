@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'date'
 require_relative 'statement'
 
+# Manages bank account transactions
 class BankAccount
-
   TODAY = Date.today.strftime('%d/%m/%Y')
 
   attr_reader :balance
@@ -14,6 +16,7 @@ class BankAccount
 
   def deposit(amount)
     raise 'Invalid input!' if invalid_input(amount)
+
     @balance += amount
     @statement.credit_transaction(amount, @balance)
   end

@@ -1,11 +1,14 @@
+# frozen_string_literal: true
+
+# rubocop:disable Metrics/BlockLength
+
 require 'bank_account'
 
 describe BankAccount do
-
   let(:statement) { double(:statement) }
   let(:bank_account) { BankAccount.new(statement) }
 
-  before do 
+  before do
     allow(statement).to receive(:debit_transaction)
     allow(statement).to receive(:credit_transaction)
     allow(statement).to receive(:final_balance).and_return(100)
@@ -70,7 +73,8 @@ describe BankAccount do
     it 'updates the balance upon loading' do
       bank_account.load_statement('file')
       expect(bank_account.balance).to eq 100
-    end 
+    end
   end
-
 end
+
+# rubocop:enable Metrics/BlockLength

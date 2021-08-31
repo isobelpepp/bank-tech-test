@@ -1,5 +1,7 @@
-class Statement
+# frozen_string_literal: true
 
+# Handles bank statements from bank account object
+class Statement
   TODAY = Date.today.strftime('%d/%m/%Y')
 
   attr_reader :transactions
@@ -17,16 +19,18 @@ class Statement
   end
 
   def print
-    puts "date:     | credit:  | debit:   | balance: |"
-    @transactions.reverse_each { |h| puts "#{h[:date]}" "|#{h[:credit].to_s.ljust(10)}" "|#{h[:debit].to_s.ljust(10)}" "|#{h[:balance].to_s.ljust(10)}" "|" }
+    puts 'date:     | credit:  | debit:   | balance: |'
+    @transactions.reverse_each do |h|
+      puts "#{h[:date]}" "|#{format(h[:credit])}" "|#{format(h[:debit])}" "|#{format(h[:balance])}" '|'
+    end
   end
 
   def save(filename)
     file = File.open(filename, 'w')
     @transactions.each do |interaction|
       interaction_data = [interaction[:date], interaction[:credit], interaction[:debit], interaction[:balance]]
-      csv_line = interaction_data.join(',')
-      file.puts(csv_line)
+      file_line = interaction_data.join(',')
+      file.puts(file_line)
     end
     puts "Your statement has been saved to '#{filename}'."
     file.close
@@ -45,5 +49,11 @@ class Statement
 
   def final_balance
     @transactions[-1][:balance]
+  end
+
+  private
+
+  def format(value)
+    value.to_s.ljust(10)
   end
 end

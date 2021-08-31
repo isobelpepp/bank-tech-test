@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'bank_account'
 
 describe 'Bank Account Feature Test' do
-
   let(:bank_account) { BankAccount.new }
 
   it 'can handle all transactions and print a statement in reverse chronological order' do
@@ -12,8 +13,7 @@ describe 'Bank Account Feature Test' do
     bank_account.withdraw(500.25)
     bank_account.withdraw(200)
 
-    statement =
-"date:     | credit:  | debit:   | balance: |
+    statement = "date:     | credit:  | debit:   | balance: |
 #{today}|0         |200       |4400.25   |
 #{today}|0         |500.25    |4600.25   |
 #{today}|5000.5    |0         |5100.5    |
@@ -21,5 +21,4 @@ describe 'Bank Account Feature Test' do
 
     expect { bank_account.print_statement }.to output(statement).to_stdout
   end
-
 end
