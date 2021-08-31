@@ -11,7 +11,11 @@ class Bank
   end
 
   def withdraw(amount)
+    if (@balance - amount).negative?
+      raise 'Insufficient funds!'
+    else
       @balance -= amount
+    end
   end
-  
+
 end
