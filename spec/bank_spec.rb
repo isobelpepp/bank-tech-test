@@ -60,9 +60,10 @@ describe Bank do
   end
 
   describe '#load_statement' do
-    it 'loads the statement into the bank object and updates interactions' do
+    it 'loads the statement into the bank object' do
       subject.load_statement('filename')
       expect(subject.interactions).to eq([{ date: Bank::TODAY, credit: 10, debit: 0, balance: 10 }])
+      expect(subject.balance).to eq 10
     end
   end
 

@@ -47,6 +47,7 @@ class Bank
       date, credit, debit, balance = line.chomp.split(',')
       @interactions << { date: date, credit: credit.to_i, debit: debit.to_i, balance: balance.to_i }
     end
+    @balance = (@interactions[-1][:balance])
     file.close
   end
 
