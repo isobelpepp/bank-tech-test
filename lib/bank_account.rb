@@ -5,8 +5,6 @@ require_relative 'statement'
 
 # Manages bank account transactions
 class BankAccount
-  TODAY = Date.today.strftime('%d/%m/%Y')
-
   attr_reader :balance
 
   def initialize(statement = Statement.new)

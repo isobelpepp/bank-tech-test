@@ -45,7 +45,7 @@ describe Statement do
       subject.save('filename')
       expect(File.read('filename')).to include '50'
       expect(File.read('filename')).to include '100'
-      expect(File.read('filename')).to include BankAccount::TODAY
+      expect(File.read('filename')).to include Statement::TODAY
     end
     it 'outputs that the file has been saved' do
       subject.credit_transaction(50, 100)
@@ -56,7 +56,7 @@ describe Statement do
   describe '#load' do
     it 'loads the statement into the bank object' do
       subject.load('filename')
-      expect(subject.transactions).to eq([{ date: BankAccount::TODAY, credit: 50, debit: 0, balance: 100 }])
+      expect(subject.transactions).to eq([{ date: Statement::TODAY, credit: 50, debit: 0, balance: 100 }])
     end
     it 'raises an error if the file does not exist' do
       expect { subject.load('non_existent') }.to raise_error 'That file does not exist'
