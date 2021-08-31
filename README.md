@@ -27,6 +27,7 @@
 ### Instructions:
 
 - Clone this repository and cd into it
+- Run 'bundle install'
 - Run 'rspec' in terminal to execute tests and check test coverage
 - IRB example:
 
@@ -39,8 +40,8 @@
 
 Outputs:
 ```
-date       || credit  || debit  || balance
-31/08/2021 || 10      || 0      || 10
+date       | credit  | debit  | balance
+31/08/2021 | 10      | 0      | 10
 ```
 ```
 > bank.save_statement('file')
@@ -61,6 +62,6 @@ outputs:
 Outputs: 
 
 ```
-date       || credit  || debit  || balance
-31/08/2021 || 10      || 0      || 10
+date       | credit  | debit  | balance
+31/08/2021 | 10      | 0      | 10
 ```
