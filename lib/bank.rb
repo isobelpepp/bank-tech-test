@@ -23,4 +23,9 @@ class Bank
     end
   end
 
+  def statement
+    puts "date:     | credit:  | debit:   | balance  |\n"
+    @interactions.each { |hash| print "#{hash[:date]}" "|#{hash[:credit].to_s.ljust(10)}" "|#{hash[:debit].to_s.ljust(10)}" "|#{hash[:balance].to_s.ljust(10)}" "|\n" }
+  end
+
 end

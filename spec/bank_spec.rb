@@ -37,4 +37,11 @@ describe Bank do
     end
   end
 
+  describe '#statement' do
+    it 'returns formatted version of interaction' do
+      subject.deposit(10)
+      expect { subject.statement }.to output("date:     | credit:  | debit:   | balance  |\n#{Bank::TODAY}|10        |0         |10        |\n").to_stdout
+    end
+  end
+
 end
