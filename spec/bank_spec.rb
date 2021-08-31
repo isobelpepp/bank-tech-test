@@ -58,5 +58,12 @@ describe Bank do
       expect { subject.save_statement('filename') }.to output("Your statement has been saved to 'filename'.\n").to_stdout
     end
   end
-  
+
+  describe '#load_statement' do
+    it 'loads the statement into the bank object and updates interactions' do
+      subject.load_statement('filename')
+      expect(subject.interactions).to eq([{ date: Bank::TODAY, credit: 10, debit: 0, balance: 10 }])
+    end
+  end
+
 end

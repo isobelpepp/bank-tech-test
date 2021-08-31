@@ -41,4 +41,13 @@ class Bank
     file.close
   end
 
+  def load_statement(filename)
+    file = File.open(filename, 'r')
+    file.readlines.each do |line|
+      date, credit, debit, balance = line.chomp.split(',')
+      @interactions << { date: date, credit: credit.to_i, debit: debit.to_i, balance: balance.to_i }
+    end
+    file.close
+  end
+
 end
