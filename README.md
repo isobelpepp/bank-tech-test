@@ -27,7 +27,7 @@
 ### Instructions:
 
 - Clone this repository and cd into it
-- Run 'rspec' in terminal to execute tests
+- Run 'rspec' in terminal to execute tests and check test coverage
 - IRB example:
 
 ```
