@@ -1,5 +1,9 @@
 # Bank Tech Test
 
+### My Approach
+
+- This project was built using TDD. I went through each of the requirements listed below and cycled through the red, green, refactor phase until each one of them were implemented.
+
 - Access my bank balance ✅
 - Deposit money ✅
   - It updates my balance ✅
@@ -10,6 +14,15 @@
 - Data can be kept in memory ✅
   - Option to save statement ✅
   - Option to load statement ✅
+
+- After these were all implemented I dealt with separation of concerns and split up the bank class into two different classes 
+  - This helped to address the different elements of interacting with a bank account and of keeping a history of interactions that are able to be saved or loaded
+- And I tackled some edge cases:
+  - Will not let you withdraw more money than is in your bank account
+  - Will not take input that isn't a float or an integer
+  - Will not take negative numbers
+  - Will not load a statement if it doesn't exist
+
 
 ### Example
 
@@ -35,6 +48,7 @@
 > require './lib/bank.rb'
 > bank = Bank.new
 > bank.deposit(10)
+> bank.withdraw(5)
 > bank.statement 
 ```
 
@@ -42,6 +56,7 @@ Outputs:
 ```
 date       | credit  | debit  | balance
 31/08/2021 | 10      | 0      | 10
+31/08/2021 | 0       | 5      | 5
 ```
 ```
 > bank.save_statement('file')
