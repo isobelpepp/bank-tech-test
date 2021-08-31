@@ -14,10 +14,10 @@ describe 'Bank Account Feature Test' do
     bank_account.withdraw(200)
 
     statement = "date:     | credit:  | debit:   | balance: |
-#{today}|0         |200       |4400.25   |
-#{today}|0         |500.25    |4600.25   |
-#{today}|5000.5    |0         |5100.5    |
-#{today}|100       |0         |100       |\n"
+#{today}|0.00      |200.00    |4400.25   |
+#{today}|0.00      |500.25    |4600.25   |
+#{today}|5000.50   |0.00      |5100.50   |
+#{today}|100.00    |0.00      |100.00    |\n"
 
     expect { bank_account.print_statement }.to output(statement).to_stdout
   end

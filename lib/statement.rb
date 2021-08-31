@@ -21,7 +21,7 @@ class Statement
   def print
     puts 'date:     | credit:  | debit:   | balance: |'
     @transactions.reverse_each do |h|
-      puts "#{h[:date]}" "|#{format(h[:credit])}" "|#{format(h[:debit])}" "|#{format(h[:balance])}" '|'
+      puts "#{h[:date]}" "|#{formatted(h[:credit])}" "|#{formatted(h[:debit])}" "|#{formatted(h[:balance])}" '|'
     end
   end
 
@@ -42,7 +42,7 @@ class Statement
     file = File.open(filename, 'r')
     file.readlines.each do |line|
       date, credit, debit, balance = line.chomp.split(',')
-      @transactions << { date: date, credit: credit.to_i, debit: debit.to_i, balance: balance.to_i }
+      @transactions << { date: date, credit: credit.to_f, debit: debit.to_f, balance: balance.to_f }
     end
     file.close
   end
@@ -53,7 +53,7 @@ class Statement
 
   private
 
-  def format(value)
-    value.to_s.ljust(10)
+  def formatted(value)
+    format('%.2f', value).to_s.ljust(10)
   end
 end

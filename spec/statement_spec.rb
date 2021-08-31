@@ -35,7 +35,7 @@ describe Statement do
     it 'returns formatted version of interaction' do
       subject.credit_transaction(50, 100)
       expect { subject.print }.to output("date:     | credit:  | debit:   | balance: |
-#{Statement::TODAY}|50        |0         |100       |\n").to_stdout
+#{Statement::TODAY}|50.00     |0.00      |100.00    |\n").to_stdout
     end
   end
 
