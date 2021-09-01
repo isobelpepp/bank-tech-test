@@ -21,7 +21,8 @@ class Statement
   def save(filename)
     file = File.open(filename, 'w')
     @transactions.each do |interaction|
-      interaction_data = [interaction[:date], interaction[:credit], interaction[:debit], interaction[:balance]]
+      interaction_data = [interaction[:date], interaction[:credit],
+                          interaction[:debit], interaction[:balance]]
       file_line = interaction_data.join(',')
       file.puts(file_line)
     end
@@ -35,7 +36,8 @@ class Statement
     file = File.open(filename, 'r')
     file.readlines.each do |line|
       date, credit, debit, balance = line.chomp.split(',')
-      @transactions << { date: date, credit: credit.to_f, debit: debit.to_f, balance: balance.to_f }
+      @transactions <<
+        { date: date, credit: credit.to_f, debit: debit.to_f, balance: balance.to_f }
     end
     file.close
   end
