@@ -6,14 +6,12 @@ require 'bank_account'
 
 describe BankAccount do
   let(:statement) { double(:statement) }
+  let(:print) { double(:print) }
   let(:bank_account) { BankAccount.new(statement) }
 
   before do
     allow(statement).to receive(:debit_transaction)
     allow(statement).to receive(:credit_transaction)
-    allow(statement).to receive(:final_balance).and_return(100)
-    allow(statement).to receive(:load).and_return('statement loaded!')
-    allow(statement).to receive(:save).and_return('statement saved!')
   end
 
   describe '#initialize' do
@@ -49,24 +47,32 @@ describe BankAccount do
 
   describe '#print_statement' do
     it 'responds to print method' do
-      allow(statement).to receive(:print).and_return('Statement printed!')
-      expect(bank_account.print_statement).to eq('Statement printed!')
+      allow(print).to receive(:print).and_return('Statement printed!')
+      allow(statement).to receive(:transactions)
+      expect(bank_account.print_statement(print)).to eq('Statement printed!')
     end
   end
 
   describe '#save_statement' do
+    before do
+      allow(statement).to receive(:save).and_return('statement saved!')
+    end
     it 'responds to save_statement method' do
       bank_account.save_statement('file')
       expect(bank_account.save_statement('file')).to eq 'statement saved!'
     end
-    it 'calls save method on statement' do
+    it 'calls the save method on statement' do
       bank_account.save_statement('file')
       expect(statement).to have_received(:save)
     end
   end
 
   describe '#load_statement' do
-    it 'calls load method on statement' do
+    before do
+      allow(statement).to receive(:final_balance).and_return(100)
+      allow(statement).to receive(:load).and_return('statement loaded!')
+    end
+    it 'calls the load method on statement' do
       bank_account.load_statement('file')
       expect(statement).to have_received(:load)
     end

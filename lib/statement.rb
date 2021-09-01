@@ -18,13 +18,6 @@ class Statement
     @transactions << { date: TODAY, credit: 0, debit: amount, balance: balance }
   end
 
-  def print
-    puts 'date:     | credit:  | debit:   | balance: |'
-    @transactions.reverse_each do |h|
-      puts "#{h[:date]}" "|#{formatted(h[:credit])}" "|#{formatted(h[:debit])}" "|#{formatted(h[:balance])}" '|'
-    end
-  end
-
   def save(filename)
     file = File.open(filename, 'w')
     @transactions.each do |interaction|
@@ -49,11 +42,5 @@ class Statement
 
   def final_balance
     @transactions[-1][:balance]
-  end
-
-  private
-
-  def formatted(value)
-    format('%.2f', value).to_s.ljust(10)
   end
 end

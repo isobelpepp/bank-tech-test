@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'date'
 require_relative 'statement'
+require_relative 'print'
 
 # Manages bank account transactions
 class BankAccount
@@ -27,8 +27,8 @@ class BankAccount
     @statement.debit_transaction(amount, @balance)
   end
 
-  def print_statement
-    @statement.print
+  def print_statement(to_print = Print.new)
+    to_print.print(@statement.transactions)
   end
 
   def save_statement(filename)
