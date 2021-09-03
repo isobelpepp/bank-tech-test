@@ -28,10 +28,10 @@
 - And a withdrawal of 500 on 14-01-2012
 - When she prints her bank statement she would see:
 ```
- date      || credit  || debit  || balance
-14/01/2012 ||         || 500.00 || 2500.00
-13/01/2012 || 2000.00 ||        || 3000.00
-10/01/2012 || 1000.00 ||        || 1000.00
+date || credit || debit || balance
+14/01/2012 || || 500.00 || 2500.00
+13/01/2012 || 2000.00 || || 3000.00
+10/01/2012 || 1000.00 || || 1000.00
 ```
 
 ### Instructions:
@@ -51,7 +51,7 @@
 
 Outputs:
 ```
-date       || credit  || debit  || balance
-31/08/2021 ||         || 5.00   || 5.00     
-31/08/2021 || 10.00   ||        || 10.00    
+date || credit || debit || balance
+31/08/2021 || || 5.00 || 5.00     
+31/08/2021 || 10.00 || || 10.00    
 ```
