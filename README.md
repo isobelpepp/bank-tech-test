@@ -45,38 +45,16 @@
 - IRB example:
 
 ```
-> require './lib/bank.rb'
-> bank = Bank.new
+> require './lib/bank_account.rb'
+> bank = BankAccount.new
 > bank.deposit(10)
 > bank.withdraw(5)
-> bank.statement 
+> bank.print_statement 
 ```
 
 Outputs:
 ```
-date       | credit  | debit  | balance
-31/08/2021 | 10      | 0      | 10
-31/08/2021 | 0       | 5      | 5
-```
-```
-> bank.save_statement('file')
-```
-
-outputs:
-```
-"Your statement has been saved to 'file'"
-```
-
-```
-## new bank object
-> new_bank = Bank.new
-> new_bank.load_statement('file')
-
-> bank.statement 
-```
-Outputs: 
-
-```
-date       | credit  | debit  | balance
-31/08/2021 | 10      | 0      | 10
+date:      || credit: || debit: || balance: 
+31/08/2021 || 0.00    || 5.00   || 5.00     
+31/08/2021 || 10.00   || 0.00   || 10.00    
 ```
