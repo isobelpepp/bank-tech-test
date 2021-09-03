@@ -11,11 +11,11 @@ class Statement
   end
 
   def credit_transaction(amount, balance)
-    @transactions << { date: TODAY, credit: amount, debit: 0, balance: balance }
+    @transactions << { date: TODAY, credit: amount, debit: nil, balance: balance }
   end
 
   def debit_transaction(amount, balance)
-    @transactions << { date: TODAY, credit: 0, debit: amount, balance: balance }
+    @transactions << { date: TODAY, credit: nil, debit: amount, balance: balance }
   end
 
   def final_balance

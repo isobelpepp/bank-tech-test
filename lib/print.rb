@@ -2,7 +2,7 @@
 
 # Prints out bank statement
 class Print
-  HEADER = "date:     || credit:  || debit:   || balance:\n"
+  HEADER = "date      || credit   || debit    || balance\n"
 
   def print(transaction_history)
     statement_rows = transaction_history.reverse.map do |h|
@@ -18,7 +18,7 @@ class Print
   end
 
   def format_value(value)
-    format('%.2f', value).to_s.ljust(10)
+    value.nil? ? value.to_s.ljust(10) : format('%.2f', value).to_s.ljust(10)
   end
 
   def format_number(number)

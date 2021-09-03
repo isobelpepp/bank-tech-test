@@ -16,7 +16,7 @@ describe Statement do
       subject.credit_transaction(50, 100)
       expect(subject.transactions[0][:date]).to eq Statement::TODAY
       expect(subject.transactions[0][:credit]).to eq 50
-      expect(subject.transactions[0][:debit]).to eq 0
+      expect(subject.transactions[0][:debit]).to eq nil
     end
   end
 
@@ -25,7 +25,7 @@ describe Statement do
       subject.credit_transaction(50, 100)
       subject.debit_transaction(30, 100)
       expect(subject.transactions[1][:date]).to eq Statement::TODAY
-      expect(subject.transactions[1][:credit]).to eq 0
+      expect(subject.transactions[1][:credit]).to eq nil
       expect(subject.transactions[1][:debit]).to eq 30
       expect(subject.transactions[1][:balance]).to eq 100
     end

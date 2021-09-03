@@ -12,16 +12,13 @@
 - Records the date of interactions ✅
 - Can access a formatted version of my bank statement ✅
 - Data can be kept in memory ✅
-  - Option to save statement ✅
-  - Option to load statement ✅
 
 - After these were all implemented I dealt with separation of concerns and split up the bank class into two different classes 
-  - This helped to address the different elements of interacting with a bank account and of keeping a history of interactions that are able to be saved or loaded
+  - This helped to address the different elements of interacting with a bank account and of keeping a history of interactions
 - And I tackled some edge cases:
   - Will not let you withdraw more money than is in your bank account
   - Will not take input that isn't a float or an integer
   - Will not take negative numbers
-  - Will not load a statement if it doesn't exist
 
 
 ### Example
@@ -54,7 +51,7 @@
 
 Outputs:
 ```
-date:      || credit: || debit: || balance: 
-31/08/2021 || 0.00    || 5.00   || 5.00     
-31/08/2021 || 10.00   || 0.00   || 10.00    
+date       || credit  || debit  || balance
+31/08/2021 ||         || 5.00   || 5.00     
+31/08/2021 || 10.00   ||        || 10.00    
 ```
