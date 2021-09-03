@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'date'
 require_relative 'statement'
 require_relative 'print'
 
@@ -29,15 +30,6 @@ class BankAccount
 
   def print_statement(to_print = Print.new)
     to_print.print(@statement.transactions)
-  end
-
-  def save_statement(filename)
-    @statement.save(filename)
-  end
-
-  def load_statement(filename)
-    @statement.load(filename)
-    @balance = @statement.final_balance
   end
 
   private

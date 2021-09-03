@@ -25,10 +25,10 @@ describe BankAccount do
       expect { bank_account.deposit(100) }.to change { bank_account.balance }.by(100)
     end
     it 'raises error if you do not put in integer or float' do
-      expect { bank_account.withdraw(:something) }.to raise_error 'Invalid input!'
+      expect { bank_account.deposit(:something) }.to raise_error 'Invalid input!'
     end
     it 'raises error if you put in a negative number' do
-      expect { bank_account.withdraw(-10) }.to raise_error 'Invalid input!'
+      expect { bank_account.deposit(-10) }.to raise_error 'Invalid input!'
     end
   end
 
@@ -50,35 +50,6 @@ describe BankAccount do
       allow(print).to receive(:print).and_return('Statement printed!')
       allow(statement).to receive(:transactions)
       expect(bank_account.print_statement(print)).to eq('Statement printed!')
-    end
-  end
-
-  describe '#save_statement' do
-    before do
-      allow(statement).to receive(:save).and_return('statement saved!')
-    end
-    it 'responds to save_statement method' do
-      bank_account.save_statement('file')
-      expect(bank_account.save_statement('file')).to eq 'statement saved!'
-    end
-    it 'calls the save method on statement' do
-      bank_account.save_statement('file')
-      expect(statement).to have_received(:save)
-    end
-  end
-
-  describe '#load_statement' do
-    before do
-      allow(statement).to receive(:final_balance).and_return(100)
-      allow(statement).to receive(:load).and_return('statement loaded!')
-    end
-    it 'calls the load method on statement' do
-      bank_account.load_statement('file')
-      expect(statement).to have_received(:load)
-    end
-    it 'updates the balance upon loading' do
-      bank_account.load_statement('file')
-      expect(bank_account.balance).to eq 100
     end
   end
 end

@@ -31,33 +31,6 @@ describe Statement do
     end
   end
 
-  describe '#save' do
-    it "should create 'filename' and put 'text' in it" do
-      subject.credit_transaction(50, 100)
-      subject.save('filename')
-      expect(File.read('filename')).to include '50'
-      expect(File.read('filename')).to include '100'
-      expect(File.read('filename')).to include Statement::TODAY
-    end
-    it 'outputs that the file has been saved' do
-      subject.credit_transaction(50, 100)
-      expect { subject.save('filename') }.to output(
-        "Your statement has been saved to 'filename'.\n"
-      ).to_stdout
-    end
-  end
-
-  describe '#load' do
-    it 'loads the statement into the bank object' do
-      transaction = [{ date: Statement::TODAY, credit: 50, debit: 0, balance: 100 }]
-      subject.load('filename')
-      expect(subject.transactions).to eq(transaction)
-    end
-    it 'raises an error if the file does not exist' do
-      expect { subject.load('non_existent') }.to raise_error 'That file does not exist'
-    end
-  end
-
   describe '#final_balance' do
     it 'provides most recent balance from interactions' do
       subject.credit_transaction(50, 100)
